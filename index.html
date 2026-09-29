@@ -601,7 +601,16 @@ document.getElementById('sendBtn').addEventListener('click', async () => {
   }
 });
 
-renderQuestion();
+try {
+  renderQuestion();
+} catch(e) {
+  console.error('遊戲初始化失敗：', e);
+  alert(
+    '遊戲初始化失敗！\n\n' +
+    '錯誤訊息：' + (e.message || e) + '\n\n' +
+    '錯誤位置：' + (e.stack || '未知')
+  );
+}
 </script>
 </body>
 </html>
