@@ -491,10 +491,13 @@ async function initLiff(){
   try{
     await liff.init({ liffId: LIFF_ID });
     liffReady = true;
-  }catch(e){
-    console.warn("LIFF 初始化失敗，將以一般網頁模式運作：", e);
-    liffReady = false;
-  }
+ }catch(e){
+  console.error('傳送訊息失敗：', e);
+  alert(
+    '傳送失敗！\n\n' +
+    '錯誤訊息：' + (e.message || e) + '\n\n' +
+    '錯誤代碼：' + (e.code || '沒有')
+  );
 }
 initLiff();
 
