@@ -485,16 +485,20 @@ const results = {
 };
 
 // ===== LIFF 設定 =====
-const LIFF_ID = "2011794441-xo5NdrBJ"; // TODO: 換成你的 LIFF ID
+const LIFF_ID = "2011794441-xo5NdrBJ";
 let liffReady = false;
+
 async function initLiff(){
   try{
     await liff.init({ liffId: LIFF_ID });
     liffReady = true;
-}catch(e){
-  console.error('傳送訊息失敗：', e);
-  alert('傳送失敗，請確認這個頁面是從 LINE 聊天室的選單或連結開啟的。');
+    console.log("LIFF 初始化成功");
+  }catch(e){
+    console.error("LIFF 初始化失敗：", e);
+    liffReady = false;
+  }
 }
+
 initLiff();
 
 let current = 0;
@@ -595,10 +599,14 @@ document.getElementById('sendBtn').addEventListener('click', async () => {
   try{
     await liff.sendMessages([{ type: 'text', text: r.shareText }]);
     liff.closeWindow();
-  }catch(e){
-    console.error('傳送訊息失敗：', e);
-    alert('傳送失敗，請確認這個頁面是從 LINE 聊天室的選單或連結開啟的。');
-  }
+ }catch(e){
+  console.error('傳送訊息失敗：', e);
+  alert(
+    '傳送失敗！\n\n' +
+    '錯誤訊息：' + (e.message || e) + '\n\n' +
+    '錯誤代碼：' + (e.code || '沒有')
+  );
+}
 });
 
 try {
