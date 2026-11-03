@@ -573,7 +573,16 @@ function showResult(){
   document.getElementById('resultTop').style.setProperty('--route-color', r.color);
   document.getElementById('sendBtn').style.setProperty('--route-color', r.color);
   document.getElementById('resultTitle').textContent = r.title;
-  document.getElementById('resultSeal').textContent = r.seal;
+
+const sealImage = {
+  route1: "history.png.jpg",
+  route2: "green.png.jpg",
+  route3: "sea.png.jpg"
+};
+
+document.getElementById('resultSeal').innerHTML =
+  `<img src="${sealImage[winner]}" alt="${r.title}" style="width:34px;height:34px;object-fit:contain;display:block;">`;
+
   document.getElementById('resultDesc').textContent = r.desc;
   document.getElementById('resultFeel').textContent = r.feel;
   document.getElementById('resultSense').textContent = r.sense;
