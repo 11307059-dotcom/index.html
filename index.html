@@ -103,14 +103,23 @@
     border-color:var(--rose);
     box-shadow:0 0 0 4px rgba(226,144,159,0.22);
   }
-  .rail-progress .station.current{ width:0; height:0; }
   .rail-progress .train{
-    position:absolute; z-index:2;
-    top:50%; transform:translate(-50%,-50%);
-    font-size:18px;
-    transition:left .4s ease;
-    filter:drop-shadow(0 2px 3px rgba(192,100,120,0.35));
-  }
+  position:absolute;
+  z-index:2;
+  top:50%;
+  transform:translate(-50%,-50%);
+  width:76px;
+  height:46px;
+  transition:left .4s ease;
+  filter:drop-shadow(0 2px 3px rgba(192,100,120,0.35));
+}
+
+.rail-progress .train img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block;
+}
 
   /* ===== Question card (soft healing kiosk) ===== */
   .kiosk{
@@ -536,11 +545,11 @@ function buildRail(){
     railProgress.appendChild(s);
   });
   const train = document.createElement('div');
-  train.className = 'train';
-  train.textContent = '🚋';
-  const pct = (current / (questions.length - 1)) * 100;
-  train.style.left = pct + '%';
-  railProgress.appendChild(train);
+train.className = 'train';
+train.innerHTML = '<img src="my-train.png" alt="列車">';
+const pct = (current / (questions.length - 1)) * 100;
+train.style.left = pct + '%';
+railProgress.appendChild(train);
 }
 
 function renderQuestion(){
