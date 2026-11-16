@@ -545,8 +545,35 @@ let liffReady = false;
 async function initLiff(){
   try{
     await liff.init({ liffId: LIFF_ID });
-    liffReady = true;
+
     console.log("LIFF 初始化成功");
+    console.log("是否在 LINE App：", liff.isInClient());
+    console.log("是否已登入：", liff.isLoggedIn());
+    console.log("是否取得 Access Token：", !!liff.getAccessToken());
+
+    if (!liff.isLoggedIn()) {
+      liffReady = false;
+
+      if (!liff.isInClient()) {
+        liff.login({
+          redirectUri: window.location.href
+        });
+      } else {
+        alert('LINE 登入狀態異常，請重新開啟遊戲。');
+      }
+
+      return;
+    }
+
+    if (!liff.getAccessToken()) {
+      liffReady = false;
+      alert('尚未取得 LINE 授權，請重新開啟遊戲。');
+      return;
+    }
+
+    liffReady = true;
+    console.log("LIFF 登入及授權確認成功");
+
   }catch(e){
     console.error("LIFF 初始化失敗：", e);
     liffReady = false;
