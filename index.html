@@ -479,7 +479,7 @@ const questions = [
   {
     text:"一個悠閒的假日，沒有行程的壓力，妳最想開啟哪種冒險？",
     opts:[
-      {label:"化身城市探險家，探索老建築與藝術，尋找藏匿於城市的故事。", r:"route1"},
+      {label:"走進充滿書香的空間，翻開一本精挑細選的書，享受自己的小宇宙。", r:"route1"},
       {label:"暫時逃離喧囂，漫步藝術和美感之間，享受只屬於自己的慢時光。", r:"route2"},
       {label:"帶著好奇心出發！逛逛特色展覽，再到港邊拍拍美照。", r:"route3"},
     ]
@@ -495,16 +495,16 @@ const questions = [
   {
     text:"到了一天的的午後，你最想用什麼方式度過，畫下完美的句點？",
     opts:[
-      {label:"走進藝術展覽，欣賞不同風格的作品，沉浸在美感與創意之中。", r:"route1"},
-      {label:"探索科學與科技的奧妙，發現生活中意想不到的新知識。", r:"route2"},
-      {label:"找個舒適的角落，翻開一本精挑細選的書，享受自己的小宇宙。", r:"route3"},
+      {label:"放慢腳步，動手做個喜歡的小東西，帶走一份專屬於自己的旅行紀念。", r:"route1"},
+      {label:"拿起工具敲敲打打，親自設計一件小飾品，把想法變成作品。", r:"route2"},
+      {label:"在舒服的午後，欣賞不一樣的藝術作品，在美感與創意中發現生活的小驚喜。", r:"route3"},
     ]
   },
 ];
 
 const results = {
   route1:{
-    title:"舊城映象",
+    title:"柔日舊城慢行",
     icon:"🏛",
     seal:"📜",
     color:"var(--route1)",
@@ -515,7 +515,7 @@ const results = {
     detailUrl:"https://example.com/route1"
   },
   route2:{
-    title:"美術綠徑",
+    title:"悠然藝境漫遊",
     icon:"🌿",
     seal:"🌿",
     color:"var(--route2)",
@@ -526,7 +526,7 @@ const results = {
     detailUrl:"https://example.com/route2"
   },
   route3:{
-    title:"港灣藝遊",
+    title:"溫婉港灣漫步",
     icon:"🌊",
     seal:"🌊",
     color:"var(--route3)",
@@ -660,21 +660,27 @@ document.getElementById('restartBtn').addEventListener('click', () => {
 
 document.getElementById('sendBtn').addEventListener('click', async () => {
   const r = results[currentWinner];
-  if(!liffReady){
-    alert('目前不在 LINE 環境中，無法傳送訊息回聊天室（此功能需在 LINE App 內開啟才會生效）。');
+
+  if (!liffReady) {
+    alert('目前不在 LINE 環境中，無法傳送訊息回聊天室。請在 LINE App 內開啟。');
     return;
   }
-  try{
-    await liff.sendMessages([{ type: 'text', text: r.shareText }]);
+
+  try {
+    await liff.sendMessages([
+      { type: 'text', text: r.shareText }
+    ]);
+
     liff.closeWindow();
- }catch(e){
-  console.error('傳送訊息失敗：', e);
-  alert(
-    '傳送失敗！\n\n' +
-    '錯誤訊息：' + (e.message || e) + '\n\n' +
-    '錯誤代碼：' + (e.code || '沒有')
-  );
-}
+
+  } catch (e) {
+    console.error('傳送訊息失敗：', e);
+    alert(
+      '傳送失敗！\n\n' +
+      '錯誤訊息：' + (e.message || e) + '\n\n' +
+      '錯誤代碼：' + (e.code || '沒有')
+    );
+  }
 });
 
 try {
