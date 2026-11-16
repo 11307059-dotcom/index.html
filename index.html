@@ -545,7 +545,11 @@ let liffReady = false;
 async function initLiff(){
   try{
     await liff.init({ liffId: LIFF_ID });
-
+alert(
+  'LINE App：' + liff.isInClient() +
+  '\n已登入：' + liff.isLoggedIn() +
+  '\n有 Access Token：' + !!liff.getAccessToken()
+);
     console.log("LIFF 初始化成功");
     console.log("是否在 LINE App：", liff.isInClient());
     console.log("是否已登入：", liff.isLoggedIn());
