@@ -288,6 +288,41 @@
     font-size:8px;
     color:var(--rose-deep);
   }
+  
+/* ===== 輕軌車票起訖站 ===== */
+.station-route {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+  padding: 22px 15px 18px;
+  background: var(--paper-2);
+}
+
+.station-circle {
+  width: 76px;
+  height: 76px;
+  border: 2px solid #b99a86;
+  border-radius: 50%;
+  background: #fffbf6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    0 0 0 4px rgba(185,154,134,0.15),
+    inset 0 0 0 2px rgba(185,154,134,0.12);
+  color: var(--ink);
+  font-family: 'Noto Serif TC', serif;
+  font-size: 21px;
+  font-weight: 900;
+}
+
+.station-arrow {
+  color: #806e62;
+  font-size: 32px;
+  font-weight: 700;
+}
+
   .ticket-body{ padding:18px 20px 22px; position:relative; overflow:hidden; }
   .field-grid{
     display:grid;
@@ -438,6 +473,18 @@
     <div class="perf-row">
       ✿ ﾟ ✿ ﾟ ✿ ﾟ ✿ ﾟ ✿ ﾟ ✿
     </div>
+    <!-- 輕軌起訖站 -->
+<div class="station-route">
+  <div class="station-circle">
+    <span id="startStation">首站</span>
+  </div>
+
+  <div class="station-arrow">➜</div>
+
+  <div class="station-circle">
+    <span id="endStation">末站</span>
+  </div>
+</div>
     <div class="ticket-body">
       <svg class="sprig-top" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M10 90C16 66 20 46 16 18" stroke="#c06478" stroke-width="2" stroke-linecap="round"/>
