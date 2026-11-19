@@ -436,6 +436,19 @@
 
   .hidden{ display:none; }
   @media (prefers-reduced-motion: reduce){ .ticket{ animation:none; } }
+  /* ===== 車票撕票虛線 ===== */
+.ticket-perforation {
+  width: 100%;
+  height: 1px;
+  margin: 12px 0 6px;
+  background: repeating-linear-gradient(
+    to right,
+    #b99a86 0px,
+    #b99a86 7px,
+    transparent 7px,
+    transparent 15px
+  );
+}
 </style>
 </head>
 <body>
@@ -475,6 +488,7 @@
       ✿ ﾟ ✿ ﾟ ✿ ﾟ ✿ ﾟ ✿ ﾟ ✿
     </div>
     <!-- 輕軌起訖站 -->
+    <div class="ticket-perforation"></div>
 <div class="station-route">
   <div class="station-circle">
     <span id="startStation">首站</span>
@@ -492,11 +506,7 @@
         <circle cx="16" cy="16" r="5" stroke="#c06478" stroke-width="2"/>
       </svg>
       <div class="field-grid">
-        <div class="sensory-inline">
-  <span class="sensory-label">感官體驗</span>
-  <span class="sensory-value" id="resultSense">—</span>
-  <span id="resultFeel" hidden></span>
-</div>
+        
       </div>
       <p class="desc" id="resultDesc"></p>
       <svg class="sprig" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
