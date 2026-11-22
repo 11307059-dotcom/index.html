@@ -451,24 +451,30 @@
   );
 }
 
+/* 左右尖銳三角形缺角 */
 .ticket-perforation::before,
 .ticket-perforation::after {
   content: "";
   position: absolute;
   top: 50%;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: var(--paper);
+  width: 0;
+  height: 0;
   transform: translateY(-50%);
+  z-index: 2;
 }
 
 .ticket-perforation::before {
-  left: -9px;
+  left: 0;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-left: 12px solid var(--bg-a);
 }
 
 .ticket-perforation::after {
-  right: -9px;
+  right: 0;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-right: 12px solid var(--bg-a);
 }
 </style>
 </head>
