@@ -208,7 +208,19 @@
     background:var(--paper);
     color:var(--ink);
     border-radius:6px;
-    clip-path:polygon(0 0, calc(100% - 22px) 0, 100% 22px, 100% 100%, 0 100%);
+clip-path: polygon(
+  0 0,
+  calc(100% - 22px) 0,
+  100% 22px,
+  100% 23%,
+  calc(100% - 12px) 25%,
+  100% 27%,
+  100% 100%,
+  0 100%,
+  0 27%,
+  12px 25%,
+  0 23%
+);
     box-shadow:0 28px 60px rgba(192,100,120,0.28);
     animation:drop .5s cubic-bezier(.22,1,.36,1);
     position:relative;
@@ -442,6 +454,7 @@
   width: 100%;
   height: 1px;
   margin: 0;
+  padding: 0;
   background: repeating-linear-gradient(
     to right,
     #b99a86 0px,
@@ -511,9 +524,7 @@ border-right: 12px solid transparent;
       <div class="safe-badge">🛡 女性安心車廂 · 全程守護</div>
       <div class="seal" id="resultSeal">✿</div>
     </div>
-    <div class="perf-row">
    
-    </div>
     <div class="ticket-perforation"></div>
     <!-- 輕軌起訖站 -->
 
