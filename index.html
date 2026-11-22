@@ -291,11 +291,14 @@ clip-path: none;
   
 /* ===== 輕軌車票起訖站 ===== */
 .station-route {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
-  justify-content: center;
-  gap: 65px;
-  padding: 12px 15px 18px;
+  justify-items: center;
+  gap: 20px;
+  min-height: 190px;
+  padding: 28px 18px 36px;
+  box-sizing: border-box;
   background: var(--paper-2);
 }
 
@@ -320,16 +323,24 @@ clip-path: none;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   position: relative;
 }
 
 .station-name {
-  margin-top: 8px;
+  margin-top: 10px;
   font-family: 'Klee One', sans-serif;
   font-size: 11px;
   text-align: center;
   white-space: nowrap;
   color: var(--ink);
+}
+  .station-arrow {
+  align-self: center;
+  justify-self: center;
+  margin: 0;
+  position: relative;
+  transform: none;
 }
 .station-arrow {
   color: #806e62;
