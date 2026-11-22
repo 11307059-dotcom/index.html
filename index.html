@@ -751,7 +751,28 @@ function showResult(){
   document.getElementById('resultTop').style.setProperty('--route-color', r.color);
   document.getElementById('sendBtn').style.setProperty('--route-color', r.color);
   document.getElementById('resultTitle').textContent = r.title;
+// 各路線的輕軌起訖站代號
+const stationCodes = {
+  route1: {
+    start: 'C12',
+    end: 'C32'
+  },
+  route2: {
+    start: 'C21',
+    end: 'C21A'
+  },
+  route3: {
+    start: 'C13',
+    end: 'C15'
+  }
+};
 
+// 顯示對應路線的首站與末站
+document.getElementById('startStation').textContent =
+  stationCodes[winner].start;
+
+document.getElementById('endStation').textContent =
+  stationCodes[winner].end;
 const headerImage = {
   route1: "history-bg.jpg.jpg",
   route2: "green-path-bg.jpg.jpg",
