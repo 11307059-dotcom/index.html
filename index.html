@@ -316,7 +316,21 @@ clip-path: none;
   font-size: 21px;
   font-weight: 900;
 }
+.station-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
 
+.station-name {
+  margin-top: 8px;
+  font-family: 'Klee One', sans-serif;
+  font-size: 11px;
+  text-align: center;
+  white-space: nowrap;
+  color: var(--ink);
+}
 .station-arrow {
   color: #806e62;
   font-size: 42px;
@@ -517,15 +531,23 @@ border-right: 12px solid transparent;
     <!-- 輕軌起訖站 -->
 
 <div class="station-route">
-  <div class="station-circle">
-    <span id="startStation">首站</span>
+
+  <div class="station-item">
+    <div class="station-circle">
+      <span id="startStation">C12</span>
+    </div>
+    <span class="station-name" id="startStationName">駁二大義站</span>
   </div>
 
   <div class="station-arrow">➜</div>
 
-  <div class="station-circle">
-    <span id="endStation">末站</span>
+  <div class="station-item">
+    <div class="station-circle">
+      <span id="endStation">C32</span>
+    </div>
+    <span class="station-name" id="endStationName">凱旋公園站</span>
   </div>
+
 </div>
     <div class="ticket-body">
       <svg class="sprig-top" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
