@@ -208,19 +208,7 @@
     background:var(--paper);
     color:var(--ink);
     border-radius:6px;
-clip-path: polygon(
-  0 0,
-  calc(100% - 22px) 0,
-  100% 22px,
-  100% 23%,
-  calc(100% - 12px) 25%,
-  100% 27%,
-  100% 100%,
-  0 100%,
-  0 27%,
-  12px 25%,
-  0 23%
-);
+clip-path: none;
     box-shadow:0 28px 60px rgba(192,100,120,0.28);
     animation:drop .5s cubic-bezier(.22,1,.36,1);
     position:relative;
@@ -785,7 +773,24 @@ document.getElementById('resultTop').style.backgroundImage =
 document.getElementById('resultTop').style.backgroundSize = 'cover';
 document.getElementById('resultTop').style.backgroundPosition = 'center';
 document.getElementById('resultTop').style.backgroundRepeat = 'no-repeat';
+// 依照上方圖片的實際高度定位撕票缺角
+requestAnimationFrame(() => {
+  const tearY = document.getElementById('resultTop').offsetHeight;
 
+  resultCard.style.clipPath = `polygon(
+    0 0,
+    calc(100% - 22px) 0,
+    100% 22px,
+    100% ${tearY - 12}px,
+    calc(100% - 12px) ${tearY}px,
+    100% ${tearY + 12}px,
+    100% 100%,
+    0 100%,
+    0 ${tearY + 12}px,
+    12px ${tearY}px,
+    0 ${tearY - 12}px
+  )`;
+});
 
   document.getElementById('resultDesc').textContent = r.desc;
 
